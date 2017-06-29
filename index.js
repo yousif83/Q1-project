@@ -56,7 +56,7 @@ ButtonElement.addEventListener("click", function() {
   $('#housingList').find('option').remove()
 
   var infoDivs = document.getElementsByClassName('info')
-    console.log(infoDivs)
+
   for (var i = 0; i < keys.length; i++) {
 
     if (searchInput.value.toLowerCase().includes(keys[i].header.toLowerCase())) {
