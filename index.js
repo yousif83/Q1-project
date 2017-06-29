@@ -10,7 +10,10 @@ var keys = [{
 } , {
   id: "climate",
   header: "climate"
-}  ,
+}  , {
+  id: "salary",
+  header: "salary"
+} ,
    {
      id: "population",
      header: "population"
@@ -34,7 +37,8 @@ mainImage.src= "https://static.pexels.com/photos/30360/pexels-photo-30360.jpg"
 
 
 
-
+var selectTag=document.getElementById("salaryList")
+var pTag=document.getElementById("salaryValue")
 var housingCostsSelect = document.querySelector("#housingCosts select")
 var housingValue = document.getElementById('value')
 var cities = []
@@ -231,13 +235,25 @@ ButtonElement.addEventListener("click", function() {
           url: "https://api.teleport.org/api/urban_areas/teleport%3A" + uaId + "/salaries/",
         })
         .done(function(msg) {
+          var Div = document.getElementById("salary")
+          console.log(msg);
+          for (var i = 0; i < msg.salaries.length; i++) {
+            var opt = document.createElement('option');
+            opt.value = msg.salaries[i].salary_percentiles.percentile_50
+            opt.innerHTML = innerHTML = msg.salaries[i].job.title
+            selectTag.appendChild(opt);
+          }
+              var optionValue = parseFloat(selectTag.options[selectTag.selectedIndex].value).toFixed(2);
 
+          pTag.innerHTML = "$" + optionValue
         })
     })
 });
 
-housingCostsSelect.addEventListener("change", function() {
-  housingValue.innerHTML = housingCostsSelect.options[housingCostsSelect.selectedIndex].value;
+selectTag.addEventListener("change", function() {
+  var optionValue = parseFloat(selectTag.options[selectTag.selectedIndex].value).toFixed(2);
+  
+pTag.innerHTML = "$" + optionValue
 });
 searchInput.addEventListener('input', function(evt) {
   var t = this.value
@@ -273,6 +289,7 @@ searchInput.addEventListener('input', function(evt) {
           document.getElementsByClassName('searchForm')[0].appendChild(sugestions)
         }
       }
+
       $(".sugests").click(function() {
         searchInput.value = this.value
         $(".sugests").remove();
