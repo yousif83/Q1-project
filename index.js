@@ -236,7 +236,7 @@ ButtonElement.addEventListener("click", function() {
         })
         .done(function(msg) {
           var Div = document.getElementById("salary")
-          console.log(msg);
+      
           for (var i = 0; i < msg.salaries.length; i++) {
             var opt = document.createElement('option');
             opt.value = msg.salaries[i].salary_percentiles.percentile_50
@@ -249,10 +249,8 @@ ButtonElement.addEventListener("click", function() {
         })
     })
 });
-
 selectTag.addEventListener("change", function() {
   var optionValue = parseFloat(selectTag.options[selectTag.selectedIndex].value).toFixed(2);
-  
 pTag.innerHTML = "$" + optionValue
 });
 searchInput.addEventListener('input', function(evt) {
