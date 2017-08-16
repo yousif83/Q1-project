@@ -33,7 +33,7 @@ var keys = [{
 
 
 var mainImage=document.getElementById('cityImg')
-mainImage.src= "https://static.pexels.com/photos/30360/pexels-photo-30360.jpg"
+mainImage.src= "https://si.wsj.net/public/resources/images/NY-DH270_WTC_GR_20141102172233.jpg"
 
 
 
@@ -236,7 +236,7 @@ ButtonElement.addEventListener("click", function() {
         })
         .done(function(msg) {
           var Div = document.getElementById("salary")
-      
+
           for (var i = 0; i < msg.salaries.length; i++) {
             var opt = document.createElement('option');
             opt.value = msg.salaries[i].salary_percentiles.percentile_50
